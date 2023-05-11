@@ -2,11 +2,35 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import Agregarimg from '@/componentes/imagenes.js'
 
 
 const inter = Inter({ subsets: ['latin'] })
 
+
 export default function Home() {
+
+  const imagenes = [ {image:"https://rickandmortyapi.com/api/character/avatar/1.jpeg"},
+{image:"https://rickandmortyapi.com/api/character/avatar/2.jpeg"}, 
+{image:"https://rickandmortyapi.com/api/character/avatar/3.jpeg"},
+{image:"https://rickandmortyapi.com/api/character/avatar/4.jpeg"},
+{image:"https://rickandmortyapi.com/api/character/avatar/5.jpeg"},
+{image:"https://rickandmortyapi.com/api/character/avatar/6.jpeg"},
+{image:"https://rickandmortyapi.com/api/character/avatar/7.jpeg"},
+{image:"https://rickandmortyapi.com/api/character/avatar/8.jpeg"},
+{image:"https://rickandmortyapi.com/api/character/avatar/9.jpeg"},
+{image:"https://rickandmortyapi.com/api/character/avatar/10.jpeg"},
+{image:"https://rickandmortyapi.com/api/character/avatar/11.jpeg"},
+{image:"https://rickandmortyapi.com/api/character/avatar/12.jpeg"},
+{image:"https://rickandmortyapi.com/api/character/avatar/13.jpeg"},
+{image:"https://rickandmortyapi.com/api/character/avatar/14.jpeg"},
+{image:"https://rickandmortyapi.com/api/character/avatar/15.jpeg"},
+{image:"https://rickandmortyapi.com/api/character/avatar/16.jpeg"},
+{image:"https://rickandmortyapi.com/api/character/avatar/17.jpeg"},
+{image:"https://rickandmortyapi.com/api/character/avatar/18.jpeg"},
+{image:"https://rickandmortyapi.com/api/character/avatar/19.jpeg"},
+{image:"https://rickandmortyapi.com/api/character/avatar/20.jpeg",} ]
+
   return (
     <>
       <Head>
@@ -17,9 +41,15 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
 
-      <h1 id="prueba1" className="text-3xl font-bold underline">
-      Hello world!
-      </h1>
+      
+    <div className="flex flex-row flex-nowrap m-5">
+
+      {imagenes.map(element =>
+      <Agregarimg src={element.image} height="200px" width="200px"></Agregarimg>)}
+
+    </div>
+      
+   
 
       </main>
     </>
