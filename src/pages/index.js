@@ -10,7 +10,31 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
 
-  const imagenes = [ {image:"https://rickandmortyapi.com/api/character/avatar/1.jpeg"},
+  function deslizarImagenesAdelante() {
+    const carrete = document.querySelector('#carrete');
+    carrete.scrollBy({
+      left: 400,
+      behavior: 'smooth'
+    });
+  };
+  
+  function deslizarImagenesAtras() {
+    const carrete = document.querySelector('#carrete');
+    carrete.scrollBy({
+      left: -400,
+      behavior: 'smooth'
+    });
+  };
+  
+  function desplazarImagenesOnWheel(event) {
+    if (event.deltaY < 0) {
+      deslizarImagenesAtras();
+    } else if (event.deltaY > 0) {
+      deslizarImagenesAdelante();
+    }
+  }
+
+const imgrym = [ {image:"https://rickandmortyapi.com/api/character/avatar/1.jpeg"},
 {image:"https://rickandmortyapi.com/api/character/avatar/2.jpeg"}, 
 {image:"https://rickandmortyapi.com/api/character/avatar/3.jpeg"},
 {image:"https://rickandmortyapi.com/api/character/avatar/4.jpeg"},
@@ -42,15 +66,23 @@ export default function Home() {
       <main className={styles.main}>
 
       
-    <div className="flex flex-row flex-nowrap m-5">
+    <div id="div1" className="flex m-3 overflow-hidden">
 
-      {imagenes.map(element =>
-      <Agregarimg src={element.image} height="200px" width="200px"></Agregarimg>)}
+    <button id="prev" onClick={deslizarImagenesAtras}>&lt;</button>
+    
+    <div className="m-3 p-3 flex flex-row overflow-hidden snap-mandatory"
+     id="carrete" onWheel={desplazarImagenesOnWheel}>
+
+      {imgrym.map(element =>
+      <Agregarimg src={element.image} height="auto" width="100%"></Agregarimg>)}
+
+
+    </div>
+
+    <button id="next" onClick={deslizarImagenesAdelante}>&gt;</button>
 
     </div>
       
-   
-
       </main>
     </>
   )

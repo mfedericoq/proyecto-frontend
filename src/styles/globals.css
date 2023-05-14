@@ -2,3 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    box-sizing: boeder-box;
+    margin: 0;
+    padding: 0;
+}
+
+#prev, #next {
+    cursor: pointer;
+    font-size: 40px;
+    font-weight: bold;
+    opacity: 0.3;
+  }
+
