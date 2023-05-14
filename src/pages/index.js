@@ -27,12 +27,30 @@ export default function Home() {
   };
   
   function desplazarImagenesOnWheel(event) {
+    
+    function deslizarrapido1() {
+      const carrete = document.querySelector('#carrete');
+      carrete.scrollBy({
+        left: 700,
+        behavior: 'smooth'
+      });
+    };
+    
+    function deslizarrapido2() {
+      const carrete = document.querySelector('#carrete');
+      carrete.scrollBy({
+        left: -700,
+        behavior: 'smooth'
+      });
+    };
+
     if (event.deltaY < 0) {
-      deslizarImagenesAtras();
+      deslizarrapido1();
     } else if (event.deltaY > 0) {
-      deslizarImagenesAdelante();
+      deslizarrapido2();
     }
   }
+
 
 const imgrym = [ {image:"https://rickandmortyapi.com/api/character/avatar/1.jpeg"},
 {image:"https://rickandmortyapi.com/api/character/avatar/2.jpeg"}, 
@@ -66,11 +84,11 @@ const imgrym = [ {image:"https://rickandmortyapi.com/api/character/avatar/1.jpeg
       <main className={styles.main}>
 
       
-    <div id="div1" className="flex m-3 overflow-hidden">
+    <div id="div1" className="container mx-auto flex m-3 overflow-hidden">
 
     <button id="prev" onClick={deslizarImagenesAtras}>&lt;</button>
     
-    <div className="m-3 p-3 flex flex-row overflow-hidden snap-mandatory"
+    <div className="m-3 p-3 flex flex-row overflow-hidden snap-mandatory snap-x"
      id="carrete" onWheel={desplazarImagenesOnWheel}>
 
       {imgrym.map(element =>
